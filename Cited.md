@@ -1,0 +1,1 @@
+# The work in this app was all based on the code provided by the instructor. The app was created following the logic presented to the students in class and using the code syntax in a similar way to create this app.
