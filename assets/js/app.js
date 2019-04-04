@@ -23,25 +23,38 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(queryURL);
             console.log(response);
+            var results = response.data;
 
-            //Div to hold the sport
-            var sportDiv = $("<div class='sport'>");
-            //Storing the rating data
-            var ratingInfo = response.rating;
-            //Create an elememt t0 display the rating info
-            var r = $("<p>").text("Rating: " + ratingInfo);
-            //Displaying the rating
-            sportDiv.append(r);
+            for (var i = 0; i < results.length; i++) {
+                //console.log(i);
 
-            //Retrieving URL for the sport
-            var imgURL = response.gif;
-            //Element to hold the image
-            var image = $("<img>").attr("src", imgURL);
-            //Appending the image
-            sportDiv.append(image);
+                //Div to hold the sport
+                var sportDiv = $("<div class='sport'>");
+                //console.log(sportDiv);
+                //Storing the rating data[]
+                var ratingInfo = results[i].rating;
+                //console.log(ratingInfo);
 
-            //Prepending lates sport before all others
-            $("#sports-view").prepend(sportDiv);
+                //Create an elememt t0 display the rating info
+                var r = $("<p>").text("Rating: " + ratingInfo);
+                //console.log(r);
+                //Displaying the rating
+                sportDiv.append(r);
+                //console.log(sportDiv);
+
+                //Retrieving URL for the sport
+                var imgURL = results[i].images.fixed_height_small.url;
+                //console.log(imgURL);
+                //Element to hold the image
+                var image = $("<img>").attr("src", imgURL);
+                //console.log(image);
+                
+                //Appending the image
+                sportDiv.append(image);
+                //console.log(sportDiv);
+                //Prepending lates sport before all others
+                $("#sports-view").prepend(sportDiv);
+            };
         });
     });
 
